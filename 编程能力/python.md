@@ -12,15 +12,15 @@
 
 ## 默认项目框架
 my_project/
-│
-├── main.py           # 程序入口，只负责串联流程
-├── models.py         # 定义数据类 (class User, class Product)
-├── utils.py          # 通用工具函数
-├── config.py         # 所有配置项和常量
-│
-├── handlers/         # 或者 services/，放核心业务逻辑
-│   ├── auth.py       # 登录注册相关
-│   └── order.py      # 订单处理相关
-│
-└── data/             # 如果需要，放数据文件 (如.csv, .json)
+|
+|-- main.py           # 程序入口，只负责串联流程
+|-- models.py         # 定义数据类 (class User, class Product)
+|-- utils.py          # 通用工具函数
+|-- config.py         # 所有配置项和常量
+|
+|-- handlers/         # 或者 services/，放核心业务逻辑
+|   |-- auth.py       # 登录注册相关
+|   |-- order.py      # 订单处理相关
+|
+|-- data/             # 如果需要，放数据文件 (如.csv, .json)
 
