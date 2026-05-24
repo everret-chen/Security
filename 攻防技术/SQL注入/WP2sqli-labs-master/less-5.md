@@ -10,7 +10,7 @@
 ```
 
 ## 报错注入
-- 报错注入是一种利用数据库错误信息回显来获取敏感数据的SQL注入技术，报错注入函数一般有updatexml()、extravalue()、floor()等，我一般
+- 报错注入是一种利用数据库错误信息回显来获取敏感数据的SQL注入技术，报错注入函数一般有updatexml()、extractvalue()、floor()等，我一般
   用updatexml().
    - updatexml()是一个使用不同的xml标记匹配和替换xml块的函数。updatexml使用时，如果xpath_string格式出现错误，mysql会爆
      出xpath语法错误（xpath syntax），带着里面的查询语句结果返回报错页面。例如select * from test where ide = 1 and (
