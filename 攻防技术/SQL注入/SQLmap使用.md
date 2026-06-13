@@ -14,4 +14,5 @@
 --dbms     指定数据库类型
 --batch    自动确认
 --dump     读取数据
+--os-shell 获取shell
 ```
