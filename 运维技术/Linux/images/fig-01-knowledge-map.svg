@@ -1,0 +1,34 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 680 372" width="680" role="img">
+<title>面向安全从业者的 Linux 知识地图</title>
+<desc>四层递进结构：上手基础、系统管理、安全加固、攻防视角，每层列出核心知识点。</desc>
+<style>
+svg{--c-text:#1f2328;--c-muted:#57606a;--c-border:rgba(0,0,0,.15);--f-mono:ui-monospace,SFMono-Regular,Consolas,monospace;--f-sans:system-ui,-apple-system,"Segoe UI","Microsoft YaHei",sans-serif}
+</style>
+
+<rect x="40" y="40" width="600" height="64" rx="8" fill="#E6F1FB" stroke="#185FA5" stroke-width="0.5"/>
+<text x="60" y="64" font-family="var(--f-sans)" font-size="14" font-weight="500" fill="#0C447C" dominant-baseline="central">① 上手基础</text>
+<text x="60" y="86" font-family="var(--f-sans)" font-size="12" fill="#185FA5" dominant-baseline="central">发行版与内核 · Shell 与命令 · 文件系统与 FHS · 文本三剑客 grep/sed/awk</text>
+
+<line x1="340" y1="104" x2="340" y2="116" stroke="var(--c-border)" stroke-width="1"/>
+<path d="M336 110L340 116L344 110" fill="none" stroke="var(--c-border)" stroke-width="1"/>
+
+<rect x="40" y="116" width="600" height="64" rx="8" fill="#E6F1FB" stroke="#185FA5" stroke-width="0.5"/>
+<text x="60" y="140" font-family="var(--f-sans)" font-size="14" font-weight="500" fill="#0C447C" dominant-baseline="central">② 系统管理</text>
+<text x="60" y="162" font-family="var(--f-sans)" font-size="12" fill="#185FA5" dominant-baseline="central">用户与组 · 文件权限与 ACL · 进程与服务 systemd · 网络 ip/ss · 计划任务与日志</text>
+
+<line x1="340" y1="180" x2="340" y2="192" stroke="var(--c-border)" stroke-width="1"/>
+<path d="M336 186L340 192L344 186" fill="none" stroke="var(--c-border)" stroke-width="1"/>
+
+<rect x="40" y="192" width="600" height="64" rx="8" fill="#EAF3DE" stroke="#3B6D11" stroke-width="0.5"/>
+<text x="60" y="216" font-family="var(--f-sans)" font-size="14" font-weight="500" fill="#27500A" dominant-baseline="central">③ 安全加固（本文重点）</text>
+<text x="60" y="238" font-family="var(--f-sans)" font-size="12" fill="#3B6D11" dominant-baseline="central">身份鉴别 · 访问控制 · 安全审计 · 网络与 SSH · 内核参数 · 强制访问控制 · 补丁与核查</text>
+
+<line x1="340" y1="256" x2="340" y2="268" stroke="var(--c-border)" stroke-width="1"/>
+<path d="M336 262L340 268L344 262" fill="none" stroke="var(--c-border)" stroke-width="1"/>
+
+<rect x="40" y="268" width="600" height="64" rx="8" fill="#EAF3DE" stroke="#3B6D11" stroke-width="0.5"/>
+<text x="60" y="292" font-family="var(--f-sans)" font-size="14" font-weight="500" fill="#27500A" dominant-baseline="central">④ 攻防视角</text>
+<text x="60" y="314" font-family="var(--f-sans)" font-size="12" fill="#3B6D11" dominant-baseline="central">本机信息收集 · 提权检查清单 · 权限维持排查 · 应急响应流程</text>
+
+<text x="40" y="352" font-family="var(--f-sans)" font-size="12" fill="var(--c-muted)" dominant-baseline="central">自下而上：先能操作，再懂原理，最后才谈加固与对抗</text>
+</svg>

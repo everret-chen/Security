@@ -1,0 +1,49 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 680 412" width="680" role="img">
+<title>Linux 目录结构与安全关注点</title>
+<desc>按 FHS 列出关键目录及其在安全加固与入侵排查中的关注点，其中 /tmp、/dev/shm、/var/spool/cron、/usr/local/bin 属于高风险目录。</desc>
+<style>
+svg{--c-text:#1f2328;--c-muted:#57606a;--c-border:rgba(0,0,0,.15);--f-mono:ui-monospace,SFMono-Regular,Consolas,monospace;--f-sans:system-ui,-apple-system,"Segoe UI","Microsoft YaHei",sans-serif}
+</style>
+
+<text x="40" y="44" font-family="var(--f-sans)" font-size="12" font-weight="500" fill="var(--c-muted)" dominant-baseline="central">目录</text>
+<text x="210" y="44" font-family="var(--f-sans)" font-size="12" font-weight="500" fill="var(--c-muted)" dominant-baseline="central">安全关注点</text>
+<line x1="40" y1="54" x2="640" y2="54" stroke="var(--c-border)" stroke-width="0.5"/>
+
+<text x="40" y="70" font-family="var(--f-mono)" font-size="12" fill="#185FA5" dominant-baseline="central">/etc</text>
+<text x="210" y="70" font-family="var(--f-sans)" font-size="12" fill="var(--c-text)" dominant-baseline="central">系统配置集中地，加固主战场；基线 644，仅 root 可写</text>
+
+<text x="40" y="97" font-family="var(--f-mono)" font-size="12" fill="#185FA5" dominant-baseline="central">/etc/shadow</text>
+<text x="210" y="97" font-family="var(--f-sans)" font-size="12" fill="var(--c-text)" dominant-baseline="central">密码哈希，必须 000 或 600；出现第二字段为空即空口令</text>
+
+<text x="40" y="124" font-family="var(--f-mono)" font-size="12" fill="#185FA5" dominant-baseline="central">/var/log</text>
+<text x="210" y="124" font-family="var(--f-sans)" font-size="12" fill="var(--c-text)" dominant-baseline="central">secure / auth.log / audit；建议外发并留存 180 天</text>
+
+<text x="40" y="151" font-family="var(--f-mono)" font-size="12" fill="#A32D2D" dominant-baseline="central">/var/spool/cron</text>
+<text x="210" y="151" font-family="var(--f-sans)" font-size="12" fill="#A32D2D" dominant-baseline="central">计划任务持久化高发地，需纳入基线比对</text>
+
+<text x="40" y="178" font-family="var(--f-mono)" font-size="12" fill="#185FA5" dominant-baseline="central">/home</text>
+<text x="210" y="178" font-family="var(--f-sans)" font-size="12" fill="var(--c-text)" dominant-baseline="central">家目录应 700/750；重点查 .ssh/authorized_keys 是否被写入</text>
+
+<text x="40" y="205" font-family="var(--f-mono)" font-size="12" fill="#185FA5" dominant-baseline="central">/root</text>
+<text x="210" y="205" font-family="var(--f-sans)" font-size="12" fill="var(--c-text)" dominant-baseline="central">root 家目录，应 700；authorized_keys 同样要查</text>
+
+<text x="40" y="232" font-family="var(--f-mono)" font-size="12" fill="#A32D2D" dominant-baseline="central">/tmp</text>
+<text x="210" y="232" font-family="var(--f-sans)" font-size="12" fill="#A32D2D" dominant-baseline="central">粘滞位 1777；建议挂载 nosuid,nodev,noexec 防落地执行</text>
+
+<text x="40" y="259" font-family="var(--f-mono)" font-size="12" fill="#A32D2D" dominant-baseline="central">/dev/shm</text>
+<text x="210" y="259" font-family="var(--f-sans)" font-size="12" fill="#A32D2D" dominant-baseline="central">共享内存，常见提权与马落地目录，建议 noexec</text>
+
+<text x="40" y="286" font-family="var(--f-mono)" font-size="12" fill="#185FA5" dominant-baseline="central">/proc  /sys</text>
+<text x="210" y="286" font-family="var(--f-sans)" font-size="12" fill="var(--c-text)" dominant-baseline="central">虚拟文件系统；进程信息与内核参数（sysctl）入口</text>
+
+<text x="40" y="313" font-family="var(--f-mono)" font-size="12" fill="#185FA5" dominant-baseline="central">/bin  /usr/bin</text>
+<text x="210" y="313" font-family="var(--f-sans)" font-size="12" fill="var(--c-text)" dominant-baseline="central">系统命令；用 rpm -V / dpkg -V 做完整性校验</text>
+
+<text x="40" y="340" font-family="var(--f-mono)" font-size="12" fill="#A32D2D" dominant-baseline="central">/usr/local/bin</text>
+<text x="210" y="340" font-family="var(--f-sans)" font-size="12" fill="#A32D2D" dominant-baseline="central">第三方命令目录，PATH 劫持排查重点</text>
+
+<text x="40" y="367" font-family="var(--f-mono)" font-size="12" fill="#185FA5" dominant-baseline="central">/boot</text>
+<text x="210" y="367" font-family="var(--f-sans)" font-size="12" fill="var(--c-text)" dominant-baseline="central">内核与 grub；建议设置 grub 密码防单用户改密</text>
+
+<text x="40" y="394" font-family="var(--f-sans)" font-size="12" fill="var(--c-muted)" dominant-baseline="central">红色条目 = 入侵排查与加固时必须重点核对的位置</text>
+</svg>

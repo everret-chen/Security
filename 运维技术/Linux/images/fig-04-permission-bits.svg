@@ -1,0 +1,72 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 680 402" width="680" role="img">
+<title>Linux 文件权限位结构与特殊权限</title>
+<desc>权限分为文件类型、属主、属组、其他四段，每段 rwx 对应 421；特殊权限 SUID 为 4、SGID 为 2、Sticky 为 1，其中 SUID 是提权排查重点。</desc>
+<style>
+svg{--c-text:#1f2328;--c-muted:#57606a;--c-border:rgba(0,0,0,.15);--f-mono:ui-monospace,SFMono-Regular,Consolas,monospace;--f-sans:system-ui,-apple-system,"Segoe UI","Microsoft YaHei",sans-serif}
+</style>
+
+<text x="40" y="44" font-family="var(--f-sans)" font-size="13" font-weight="500" fill="var(--c-muted)" dominant-baseline="central">权限位结构：-rwxr-xr-x</text>
+
+<rect x="40" y="56" width="145" height="60" rx="6" fill="#E6F1FB" stroke="#185FA5" stroke-width="0.5"/>
+<text x="112" y="72" font-family="var(--f-sans)" font-size="12" fill="#185FA5" text-anchor="middle" dominant-baseline="central">文件类型</text>
+<text x="112" y="94" font-family="var(--f-mono)" font-size="16" fill="#0C447C" text-anchor="middle" dominant-baseline="central">-</text>
+<text x="112" y="108" font-family="var(--f-sans)" font-size="11" fill="var(--c-muted)" text-anchor="middle" dominant-baseline="central">d 目录 l 链接</text>
+
+<rect x="190" y="56" width="145" height="60" rx="6" fill="#E6F1FB" stroke="#185FA5" stroke-width="0.5"/>
+<text x="262" y="72" font-family="var(--f-sans)" font-size="12" fill="#185FA5" text-anchor="middle" dominant-baseline="central">属主 u</text>
+<text x="262" y="94" font-family="var(--f-mono)" font-size="16" fill="#0C447C" text-anchor="middle" dominant-baseline="central">rwx</text>
+<text x="262" y="108" font-family="var(--f-sans)" font-size="11" fill="var(--c-muted)" text-anchor="middle" dominant-baseline="central">4+2+1 = 7</text>
+
+<rect x="340" y="56" width="145" height="60" rx="6" fill="#E6F1FB" stroke="#185FA5" stroke-width="0.5"/>
+<text x="412" y="72" font-family="var(--f-sans)" font-size="12" fill="#185FA5" text-anchor="middle" dominant-baseline="central">属组 g</text>
+<text x="412" y="94" font-family="var(--f-mono)" font-size="16" fill="#0C447C" text-anchor="middle" dominant-baseline="central">r-x</text>
+<text x="412" y="108" font-family="var(--f-sans)" font-size="11" fill="var(--c-muted)" text-anchor="middle" dominant-baseline="central">4+0+1 = 5</text>
+
+<rect x="490" y="56" width="145" height="60" rx="6" fill="#E6F1FB" stroke="#185FA5" stroke-width="0.5"/>
+<text x="562" y="72" font-family="var(--f-sans)" font-size="12" fill="#185FA5" text-anchor="middle" dominant-baseline="central">其他 o</text>
+<text x="562" y="94" font-family="var(--f-mono)" font-size="16" fill="#0C447C" text-anchor="middle" dominant-baseline="central">r-x</text>
+<text x="562" y="108" font-family="var(--f-sans)" font-size="11" fill="var(--c-muted)" text-anchor="middle" dominant-baseline="central">4+0+1 = 5</text>
+
+<line x1="40" y1="134" x2="640" y2="134" stroke="var(--c-border)" stroke-width="0.5"/>
+<text x="40" y="150" font-family="var(--f-sans)" font-size="13" font-weight="500" fill="var(--c-muted)" dominant-baseline="central">特殊权限（第 4 位八进制）</text>
+
+<rect x="40" y="160" width="190" height="70" rx="6" fill="#FCEBEB" stroke="#A32D2D" stroke-width="0.5"/>
+<text x="60" y="180" font-family="var(--f-sans)" font-size="13" font-weight="500" fill="#791F1F" dominant-baseline="central">SUID = 4</text>
+<text x="60" y="200" font-family="var(--f-sans)" font-size="11" fill="#A32D2D" dominant-baseline="central">执行时以文件属主身份运行</text>
+<text x="60" y="216" font-family="var(--f-sans)" font-size="11" fill="#A32D2D" dominant-baseline="central">属主为 root 时是提权高危点</text>
+
+<rect x="236" y="160" width="190" height="70" rx="6" fill="#E6F1FB" stroke="#185FA5" stroke-width="0.5"/>
+<text x="256" y="180" font-family="var(--f-sans)" font-size="13" font-weight="500" fill="#0C447C" dominant-baseline="central">SGID = 2</text>
+<text x="256" y="200" font-family="var(--f-sans)" font-size="11" fill="#185FA5" dominant-baseline="central">目录中新建文件继承目录属组</text>
+<text x="256" y="216" font-family="var(--f-sans)" font-size="11" fill="#185FA5" dominant-baseline="central">对文件则以属组身份运行</text>
+
+<rect x="432" y="160" width="190" height="70" rx="6" fill="#E6F1FB" stroke="#185FA5" stroke-width="0.5"/>
+<text x="452" y="180" font-family="var(--f-sans)" font-size="13" font-weight="500" fill="#0C447C" dominant-baseline="central">Sticky = 1</text>
+<text x="452" y="200" font-family="var(--f-sans)" font-size="11" fill="#185FA5" dominant-baseline="central">仅文件属主与 root 可删除</text>
+<text x="452" y="216" font-family="var(--f-sans)" font-size="11" fill="#185FA5" dominant-baseline="central">典型为 /tmp 的 1777</text>
+
+<line x1="40" y1="250" x2="640" y2="250" stroke="var(--c-border)" stroke-width="0.5"/>
+<text x="40" y="266" font-family="var(--f-sans)" font-size="12" font-weight="500" fill="var(--c-muted)" dominant-baseline="central">数字</text>
+<text x="160" y="266" font-family="var(--f-sans)" font-size="12" font-weight="500" fill="var(--c-muted)" dominant-baseline="central">符号</text>
+<text x="330" y="266" font-family="var(--f-sans)" font-size="12" font-weight="500" fill="var(--c-muted)" dominant-baseline="central">典型用途</text>
+
+<text x="40" y="288" font-family="var(--f-mono)" font-size="12" fill="#791F1F" dominant-baseline="central">4755</text>
+<text x="160" y="288" font-family="var(--f-mono)" font-size="12" fill="var(--c-text)" dominant-baseline="central">-rwsr-xr-x</text>
+<text x="330" y="288" font-family="var(--f-sans)" font-size="12" fill="var(--c-text)" dominant-baseline="central">SUID 程序，提权排查重点</text>
+
+<text x="40" y="310" font-family="var(--f-mono)" font-size="12" fill="var(--c-text)" dominant-baseline="central">2750</text>
+<text x="160" y="310" font-family="var(--f-mono)" font-size="12" fill="var(--c-text)" dominant-baseline="central">-rwxr-s---</text>
+<text x="330" y="310" font-family="var(--f-sans)" font-size="12" fill="var(--c-text)" dominant-baseline="central">目录协作，新建文件继承属组</text>
+
+<text x="40" y="332" font-family="var(--f-mono)" font-size="12" fill="var(--c-text)" dominant-baseline="central">1777</text>
+<text x="160" y="332" font-family="var(--f-mono)" font-size="12" fill="var(--c-text)" dominant-baseline="central">drwxrwxrwt</text>
+<text x="330" y="332" font-family="var(--f-sans)" font-size="12" fill="var(--c-text)" dominant-baseline="central">/tmp 公共目录粘滞位</text>
+
+<text x="40" y="354" font-family="var(--f-mono)" font-size="12" fill="var(--c-text)" dominant-baseline="central">0600</text>
+<text x="160" y="354" font-family="var(--f-mono)" font-size="12" fill="var(--c-text)" dominant-baseline="central">-rw-------</text>
+<text x="330" y="354" font-family="var(--f-sans)" font-size="12" fill="var(--c-text)" dominant-baseline="central">私钥、shadow 等敏感文件</text>
+
+<text x="40" y="376" font-family="var(--f-mono)" font-size="12" fill="var(--c-text)" dominant-baseline="central">0644</text>
+<text x="160" y="376" font-family="var(--f-mono)" font-size="12" fill="var(--c-text)" dominant-baseline="central">-rw-r--r--</text>
+<text x="330" y="376" font-family="var(--f-sans)" font-size="12" fill="var(--c-text)" dominant-baseline="central">普通配置文件默认权限</text>
+</svg>
